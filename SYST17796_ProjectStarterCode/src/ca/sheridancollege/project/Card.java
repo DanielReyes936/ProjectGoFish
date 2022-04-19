@@ -12,14 +12,37 @@ package ca.sheridancollege.project;
  * @author dancye
  */
 public abstract class Card {
-    //default modifier for child classes
+   
+        private Suit suit;
+	private Value value;
+        
+        // public static final String [] SUITS = {"Hearts", "Diamonds", "Spades", "Clubs"};
+  
+         public Card()
+         {}
+        public Card(Value value, Suit suit )
+        {
+            this.value=value;
+            this.suit=suit;
+        }
 
     /**
-     * Students should implement this method for their specific children classes
-     *
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
+     * @return the suit
      */
-    @Override
-    public abstract String toString();
+    public Suit getSuit() {
+        return suit;
+    }
 
+   
+
+    /**
+     * @return the value
+     */
+    public Value getValue() {
+        return value;
+    }
+
+   
+
+	
 }
