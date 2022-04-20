@@ -53,7 +53,7 @@ abstract class Player
  
         //Used for the computer's strategy//
         if (tmp==1)
-            ((AIPlayer) other).queries.add(cType);
+            ((CPUPlayer) other).queries.add(cType);
         //                               //
  
         if (other.hasGiven(cType))
