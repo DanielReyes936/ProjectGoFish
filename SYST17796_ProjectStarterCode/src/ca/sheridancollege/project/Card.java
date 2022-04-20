@@ -12,20 +12,21 @@ package ca.sheridancollege.project;
  * @author dancye
  */
 public abstract class Card {
-   
-        private Suit suit;
-	private Value value;
-        
-        // public static final String [] SUITS = {"Hearts", "Diamonds", "Spades", "Clubs"};
-  
-         public Card()
-         {}
-        public Card(Value value, Suit suit )
-        {
-            this.value=value;
-            this.suit=suit;
-        }
-
+    public enum Suit{
+    HEARTS,CLUBS,SPADES,DIAMONDS
+    }
+    public enum Value{
+        ASS,ONE, TWO, THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEEN,JACK,QUEEN,KING
+    }    
+    
+    //ENUM
+    private final Suit suit;
+    private final Value value;
+    public Card(Suit suit,Value value)
+    {
+        this.suit=suit;
+        this.value=value;
+    }
     /**
      * @return the suit
      */
@@ -33,16 +34,18 @@ public abstract class Card {
         return suit;
     }
 
-   
-
     /**
      * @return the value
      */
     public Value getValue() {
         return value;
     }
+    
+    
+    @Override
+    public String toString() {
+        return "Card"  + suit + value ;
+    }
+    
 
-   
-
-	
 }
