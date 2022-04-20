@@ -21,6 +21,9 @@ abstract class Player
 {
     protected ArrayList<Card> hand = new ArrayList<Card>();
     private int numBooks;
+    public int numcard= hand.size();
+
+    
  
     public Player()
     {
@@ -103,5 +106,13 @@ abstract class Player
     }
  
     public abstract void haveTurn();
+
+    private static class numcard {
+
+        public numcard() {
+        }
+    }
+
+   
  
 }

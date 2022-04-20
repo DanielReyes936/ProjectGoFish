@@ -22,45 +22,24 @@ public class PlayerTest {
     public void setUp() {
     }
 
-    /**
-     * Test of hasGiven method, of class Player.
-     */
-    @Test
-    public void testHasGiven() {
-        System.out.println("hasGiven");
-        Card cType = null;
-        Player instance = new PlayerImpl();
-        boolean expResult = false;
-        boolean result = instance.hasGiven(cType);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
 
-    /**
-     * Test of giveAll method, of class Player.
-     */
-    @Test
-    public void testGiveAll() {
-        System.out.println("giveAll");
-        Card cType = null;
-        Player instance = new PlayerImpl();
-        ArrayList<Card> expResult = null;
-        ArrayList<Card> result = instance.giveAll(cType);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
 
     /**
      * Test of getNumBooks method, of class Player.
      */
     @Test
     public void testGetNumBooks() {
-        System.out.println("getNumBooks");
-        Player instance = new PlayerImpl();
-        int expResult = 0;
-        int result = instance.getNumBooks();
+        System.out.println("Number Card");
+        Player instance = new Player() {
+            @Override
+            public void haveTurn() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        };
+        int expResult = 8;
+        int result = instance.numcard;
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -69,14 +48,7 @@ public class PlayerTest {
     /**
      * Test of haveTurn method, of class Player.
      */
-    @Test
-    public void testHaveTurn() {
-        System.out.println("haveTurn");
-        Player instance = new PlayerImpl();
-        instance.haveTurn();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
 
     public class PlayerImpl extends Player {
 

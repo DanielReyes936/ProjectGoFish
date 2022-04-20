@@ -21,7 +21,19 @@ public class GoFishTest {
     public void setUp() {
     }
 
-   
+    /**
+     * Test of draw method, of class GoFish.
+     */
+    @Test
+    public void testDraw() {
+        System.out.println("draw");
+        Card expResult = null;
+        Card result = GoFish.draw();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
     /**
      * Test of deckSize method, of class GoFish.
      */
@@ -35,6 +47,5 @@ public class GoFishTest {
         fail("The test case is a prototype.");
     }
 
-    
-    
+   
 }
