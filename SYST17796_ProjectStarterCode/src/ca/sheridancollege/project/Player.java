@@ -11,39 +11,97 @@ package ca.sheridancollege.project;
  * @author dancye
  * @author Paul Bonenfant Jan 2020
  */
-public abstract class Player {
+import java.util.ArrayList;
 
-    private String name; //the unique name for this player
-
-    /**
-     * A constructor that allows you to set the player's unique ID
-     *
-     * @param name the unique ID to assign to this player.
-     */
-    public Player(String name) {
-        this.name = name;
+/**
+ *
+ * @author Daniel Reyes
+ */
+abstract class Player
+{
+    protected ArrayList<Card> hand = new ArrayList<Card>();
+    private int numBooks;
+ 
+    public Player()
+    {
+        for(int i=0;i<8;i++)
+            fish();
     }
-
-    /**
-     * @return the player name
-     */
-    public String getName() {
-        return name;
+ 
+    public boolean hasGiven(Card cType)
+    {
+        return hand.contains(cType);
     }
-
-    /**
-     * Ensure that the playerID is unique
-     *
-     * @param name the player name to set
-     */
-    public void setName(String name) {
-        this.name = name;
+ 
+    public ArrayList<Card> giveAll(Card cType)
+    {
+        ArrayList<Card> x = new ArrayList<Card>(); //Complicated because simply taking the cards as they
+        for(int i=0;i<hand.size();i++)            //are found would mess up the traversing of the hand
+            if (hand.get(i) == cType)
+              x.add(hand.get(i));
+        for(int c=0;c<x.size();c++)
+            hand.remove(cType);
+        return x;
     }
-
-    /**
-     * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
-     * with logic to play your game.
-     */
-    public abstract void play();
-
+ 
+    protected boolean askFor(Card cType)
+    {
+        int tmp = 0;
+        if (this instanceof HumanPlayer)
+            tmp = 1;
+        Player other = GoFish.Players[tmp];
+ 
+        //Used for the computer's strategy//
+        if (tmp==1)
+            ((AIPlayer) other).queries.add(cType);
+        //                               //
+ 
+        if (other.hasGiven(cType))
+        {
+            for(Card c: other.giveAll(cType))
+                hand.add(c);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+ 
+    protected void fish()
+	    {
+	        if (GoFish.deckSize() > 0)
+	        	hand.add(GoFish.draw());
+	        else
+	        	System.out.println("But that's impossible since the deck is empty.");
+    }
+ 
+    public int getNumBooks()
+    {
+        return numBooks;
+    }
+ 
+    protected Card checkForBooks()
+    {
+        for(Card c: hand) //Not very elegant!
+        {
+            int num = 0;
+            for(Card d: hand)
+              if (c == d)
+                  num++;
+            if (num == 4)
+            {
+                for(int i=0;i<4;i++)
+                    hand.remove(c);
+                numBooks++;
+                return c;
+            }
+        }
+        return null;
+ 
+ 
+    }
+ 
+    public abstract void haveTurn();
+ 
 }

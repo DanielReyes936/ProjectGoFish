@@ -11,41 +11,10 @@ package ca.sheridancollege.project;
  *
  * @author dancye
  */
-public abstract class Card {
-    public enum Suit{
-    HEARTS,CLUBS,SPADES,DIAMONDS
-    }
-    public enum Value{
-        ASS,ONE, TWO, THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEEN,JACK,QUEEN,KING
-    }    
-    
-    //ENUM
-    private final Suit suit;
-    private final Value value;
-    public Card(Suit suit,Value value)
-    {
-        this.suit=suit;
-        this.value=value;
-    }
-    /**
-     * @return the suit
-     */
-    public Suit getSuit() {
-        return suit;
-    }
-
-    /**
-     * @return the value
-     */
-    public Value getValue() {
-        return value;
-    }
-    
-    
-    @Override
-    public String toString() {
-        return "Card"  + suit + value ;
-    }
-    
-
+/**
+ *
+ * @author tmdan
+ */
+public enum Card {
+    ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
 }
