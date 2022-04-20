@@ -1,25 +1,76 @@
-/**
- * SYST 17796 Project Base code.
- * Students can modify and extend to implement their game.
- * Add your name as an author and the date!
- */
 package ca.sheridancollege.project;
 
 /**
- * A class to be used as the base Card class for the project. Must be general enough to be instantiated for any Card
- * game. Students wishing to add to the code should remember to add themselves as a modifier.
- *
  * @author dancye
  */
-public abstract class Card {
-    //default modifier for child classes
-
-    /**
-     * Students should implement this method for their specific children classes
-     *
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
-     */
-    @Override
-    public abstract String toString();
-
+public class Card {
+	private int cSuit;
+	private int cRank;
+	public void testA()
+	{
+   	System.out.println("test");
+	}
+	public int getSuit()
+	{
+    	return cSuit;
+	}
+	public int getRank()
+	{
+    	return cRank;
+	}
+	public Card(int cSuit, int cRank)
+	{
+    	this.cSuit = cSuit;
+    	this.cRank = cRank;
+	}
+	public String toString()
+	{
+    	String suitStr;
+    	if (cSuit == 0)
+		{
+        	suitStr = "spades";
+    	}
+		else if (cSuit == 1)
+		{
+        	suitStr = "hearts";
+    	}
+		else if (cSuit == 2)
+		{
+        	suitStr = "clubs";
+    	}
+		else
+		{
+        	suitStr = "diamonds";
+    	}
+    	String rankStr;
+    	switch (cRank)
+		{
+        	case 11:
+            	rankStr = "jack";
+            	break;
+        	case 12:
+            	rankStr = "queen";
+            	break;
+        	case 13:
+            	rankStr = "king";
+            	break;
+        	case 14:
+            	rankStr = "ace";
+            	break;
+        	default:
+            	rankStr = "" + cRank;
+    	}
+    	return rankStr + " of " + suitStr;
+	}
+	public static void main(String[] args)
+	{
+    	Card cA = new Card(0, 12);
+    	Card cB = new Card(1, 2);  
+    	Card cC = new Card(3, 11);
+		System.out.println(cA);
+    	System.out.println(cB);
+    	System.out.println(cC);
+       
+	}
 }
+
